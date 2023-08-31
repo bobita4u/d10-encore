@@ -1,8 +1,11 @@
 <?php
 /**
- * @file
- *   This controller file populates the autocomplete form field
- *   with countries list codes
+ * JsonApiCountriesController.php
+ *
+ * @author    Babita Neog <bobita4u@gmail.com>
+ * @copyright 2023 Babita
+ * @license   Licence Name
+ * PHP version 8
  */
 
 namespace Drupal\dhl_location_finder\Controller;
@@ -13,9 +16,12 @@ use Drupal\Component\Utility\Xss;
 use CommerceGuys\Addressing\Country\CountryRepository;
 
 /**
- * Class JsonApiCountriesController.
+ * JsonApiCountriesController Class Doc Comment
  *
- * @package Drupal\dhl_location_finder\Controller
+ * @category Class
+ * @package  dhl_location_finder
+ * @author   B.N,
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 class JsonApiCountriesController
 {
