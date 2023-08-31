@@ -63,3 +63,4 @@
 /drush
 /drupal.phar
 /drupal
+web/modules/contrib/*
