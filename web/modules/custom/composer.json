@@ -1,0 +1,16 @@
+{
+    "name": "drupal/dhl_location_finder",
+    "type": "drupal-module",
+    "description": "Provides functionality for fetching DHL locations based on country, cite and postal code.",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "babitaneog",
+            "email": "email@example.com"
+        }
+    ],
+    "require": {
+        "commerceguys/addressing": "^1.4.2"
+    }
+}
