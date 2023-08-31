@@ -64,3 +64,4 @@
 /drupal.phar
 /drupal
 web/modules/contrib/*
+*.sql.gz
