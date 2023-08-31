@@ -105,18 +105,20 @@ class LocationFinderForm extends FormBase
       $filteredLocations = [];
       foreach ($locations['locations'] as $location) {
         if ($this->isValidLocation($location)) {
-          $filteredLocations[] = $this->formatLocation($location);
+          $filteredLocations[] = $location;
         }
       }
 
+      /*kint($filteredLocations);
+      exit;*/
+
       if (!empty($filteredLocations)) {
         // Output filtered locations in YAML format.
-        $yamlOutput = Yaml::encode($filteredLocations);
+        $yamlOutput = $this->formatLocation($filteredLocations);
 
         // Display the YAML output.
         \Drupal::messenger()->addMessage($yamlOutput);
-      }
-      else {
+      } else {
         \Drupal::messenger()->addMessage($this->t("Please try with another city name and postal code for the selected country code!"));
       }
     } else {
@@ -132,17 +134,38 @@ class LocationFinderForm extends FormBase
   {
     // Check if the location works on weekends and has an even number in the address.
     // Implement your validation logic here.
-    return true;
+    // Check for even number in address.
+    $streetAddress = $location['place']['address']['streetAddress'];
+    $isValid = 1;
+
+    preg_match_all('/[0-9]+/', $streetAddress, $matches);
+
+    if (!empty($matches)) {
+      foreach ($matches as $match) {
+        //kint(array_filter($match, array($this, 'isOdd')));
+        $isValid = (!empty(array_filter($match, array($this, 'isOdd')))) ? 0 : 1;
+      }
+    }
+
+    return $isValid;
+  }
+
+  private function isOdd($num)
+  {
+    // returns whether the input integer is odd
+    return $num & 1;
   }
 
   /**
    * @param array $location
-   * @return array
+   * @return string
    */
   private function formatLocation(array $location)
   {
     // Format the location data as required in the YAML output.
     // Implement your formatting logic here.
-    return $location;
+    $yamlOutput = Yaml::encode($location);
+
+    return $yamlOutput;
   }
 }
