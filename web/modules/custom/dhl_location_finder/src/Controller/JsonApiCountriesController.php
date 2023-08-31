@@ -2,11 +2,9 @@
 
 namespace Drupal\dhl_location_finder\Controller;
 
-use Drupal\Core\Entity\Element\EntityAutocomplete;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\Component\Utility\Xss;
-use \CommerceGuys\Addressing\AddressFormat\AddressFormatRepository;
 use \CommerceGuys\Addressing\Country\CountryRepository;
 
 /**
