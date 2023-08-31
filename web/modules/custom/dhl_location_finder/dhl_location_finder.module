@@ -1,19 +1,26 @@
 <?php
 
+/**
+ * @file
+ *
+ * This file wil contain drupal hooks.
+ */
+
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_help().
  */
-function dhl_location_finder_help($route_name, RouteMatchInterface $route_match)
-{
+function dhl_location_finder_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     case 'help.page.dhl_location_finder':
       return '<p>' . t('Welcome to the help page for the DHL Location Finder Module. This module Interacts with DHL API to find locations..') . '</p>';
   }
 }
 
-function dhl_location_finder_page_attachments(array &$attachments)
-{
+/**
+ * Implements hook_page_attachments().
+ */
+function dhl_location_finder_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'dhl_location_finder/tweaks';
 }
