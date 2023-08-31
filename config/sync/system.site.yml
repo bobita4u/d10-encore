@@ -1,9 +1,9 @@
 _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: en
-uuid: 48205963-7878-4538-8429-2b7e63d13ff1
-name: "Encore's DHL Location Finder service"
-mail: bobita4u@gmail.com
+uuid: c7f01e7b-9838-448d-843a-66f1d71fa22e
+name: 'Drush Site-Install'
+mail: admin@example.com
 slogan: ''
 page:
   403: ''

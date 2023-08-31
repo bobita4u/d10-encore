@@ -9,28 +9,18 @@ config:
 #proxy:
 #  appserver_nginx:
 #    - dhl-location-finder-encore.lndo.site
-services:
-  appserver:
-    cmd: drush --root=/app/web
-    build:
-      - composer install
-      - "composer require drupal/coder"
-      - "/app/vendor/bin/phpcs --config-set installed_paths /app/vendor/drupal/coder/coder_sniffer"
+#services:
+#  appserver:
+#    cmd: drush --root=/app/web
+#    build:
+#      - composer install
 tooling:
-  drupalcs:
-    service: appserver
-    cmd: "/app/vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions='php,module,inc,install,test,profile,theme,js,css,info,txt'"
-    description: Run phpcs Drupal Coding Standards against a given file or directory.
-  drupalcbf:
-    service: appserver
-    cmd: "/app/vendor/bin/phpcbf --standard=Drupal --extensions='php,module,inc,install,test,profile,theme,js,css,info,txt'"
-    description: Automatically fix Drupal coding standards suggestions.
   drush:
     service: appserver
     env:
       DRUSH_OPTIONS_URI: "https://d10-dhl-encore.lndo.site"
 
-events:
-  pre-start:
-    - appserver: composer install
-    - database: echo "Composer ran"
+#events:
+#  pre-start:
+#    - appserver: composer install
+#    - database: echo "Composer ran"

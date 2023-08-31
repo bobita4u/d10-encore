@@ -1,4 +1,4 @@
-uuid: dadad366-53d1-4904-b0db-34f631e5a38c
+uuid: 0e0454f2-6e23-433e-b6a2-c215c395d292
 langcode: en
 status: true
 dependencies: {  }
@@ -7,7 +7,7 @@ _core:
 id: feedback
 label: 'Website feedback'
 recipients:
-  - bobita4u@gmail.com
+  - admin@example.com
 reply: ''
 weight: 0
 message: 'Your message has been sent.'

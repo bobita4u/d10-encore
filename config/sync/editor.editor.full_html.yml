@@ -1,4 +1,4 @@
-uuid: f1b9ad37-ddd3-4855-bf51-c587f2607773
+uuid: fc15583e-017a-4ffd-b9ab-5855ab8cb72b
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   module:
     - ckeditor5
 _core:
-  default_config_hash: qtbIKnf_F-jhwZ-rl2ajm3BfFNPj8INYFVd2_5k6UFA
+  default_config_hash: m3pL_vbOaNdIkaQFbupVk6gUbrQgO6j9KxoL6yw6yNw
 format: full_html
 editor: ckeditor5
 settings:
@@ -35,20 +35,6 @@ settings:
       - '|'
       - sourceEditing
   plugins:
-    ckeditor5_heading:
-      enabled_headings:
-        - heading2
-        - heading3
-        - heading4
-        - heading5
-        - heading6
-    ckeditor5_imageResize:
-      allow_resize: true
-    ckeditor5_list:
-      reversed: true
-      startIndex: true
-    ckeditor5_sourceEditing:
-      allowed_tags: {  }
     ckeditor5_codeBlock:
       languages:
         -
@@ -93,6 +79,20 @@ settings:
         -
           label: XML
           language: xml
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_imageResize:
+      allow_resize: true
+    ckeditor5_list:
+      reversed: true
+      startIndex: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
 image_upload:
   status: true
   scheme: public
