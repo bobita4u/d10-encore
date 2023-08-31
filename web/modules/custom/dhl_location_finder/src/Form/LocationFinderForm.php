@@ -109,9 +109,6 @@ class LocationFinderForm extends FormBase
         }
       }
 
-      /*kint($filteredLocations);
-      exit;*/
-
       if (!empty($filteredLocations)) {
         // Output filtered locations in YAML format.
         $yamlOutput = $this->formatLocation($filteredLocations);
@@ -133,8 +130,7 @@ class LocationFinderForm extends FormBase
   private function isValidLocation(array $location)
   {
     // Check if the location works on weekends and has an even number in the address.
-    // Implement your validation logic here.
-    // Check for even number in address.
+    // Check for odd number in address & skip.
     $streetAddress = $location['place']['address']['streetAddress'];
     $isValid = 1;
 
@@ -142,10 +138,20 @@ class LocationFinderForm extends FormBase
 
     if (!empty($matches)) {
       foreach ($matches as $match) {
-        //kint(array_filter($match, array($this, 'isOdd')));
         $isValid = (!empty(array_filter($match, array($this, 'isOdd')))) ? 0 : 1;
       }
     }
+
+    // check if not working on weekends then skip.
+    $openingHours = $location['openingHours'];
+    $daysOfWeek = [];
+    foreach ($openingHours as $openingHour) {
+      $uriSegments = explode("/", parse_url($openingHour['dayOfWeek'], PHP_URL_PATH));
+      $daysOfWeek[] = array_pop($uriSegments);
+    }
+
+    $reqDays = ["Saturday", "Sunday"];
+    $isValid = (!($this->inArrayAny($reqDays, $daysOfWeek))) ? 0 : 1;
 
     return $isValid;
   }
@@ -163,9 +169,40 @@ class LocationFinderForm extends FormBase
   private function formatLocation(array $location)
   {
     // Format the location data as required in the YAML output.
-    // Implement your formatting logic here.
     $yamlOutput = Yaml::encode($location);
 
     return $yamlOutput;
+  }
+
+  private function checkWorkingWeekends($location)
+  {
+    $bool = 1;
+
+    return $bool;
+  }
+
+  /**
+   * ALL needles exist
+   *
+   * @param $needles
+   * @param $haystack
+   * @return bool
+   */
+  private function inArrayAll($needles, $haystack)
+  {
+    return empty(array_diff($needles, $haystack));
+  }
+
+
+  /**
+   * ANY of the needles exist
+   *
+   * @param $needles
+   * @param $haystack
+   * @return bool
+   */
+  private function inArrayAny($needles, $haystack)
+  {
+    return !empty(array_intersect($needles, $haystack));
   }
 }
