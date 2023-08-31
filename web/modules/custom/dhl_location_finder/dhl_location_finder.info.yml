@@ -1,0 +1,7 @@
+name: 'DHL Location Finder'
+type: module
+description: 'Interacts with DHL API to find locations.'
+core_version_requirement: ^9 || ^10
+package: DHL Custom
+version: '1.0'
+
