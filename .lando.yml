@@ -1,0 +1,26 @@
+name: d10-dhl-encore
+recipe: drupal10
+config:
+  webroot: web
+#  via: nginx
+  php: '8.1'
+#  database: mariadb
+#  composer_version: '2.4.4'
+#proxy:
+#  appserver_nginx:
+#    - dhl-location-finder-encore.lndo.site
+#services:
+#  appserver:
+#    cmd: drush --root=/app/web
+#    build:
+#      - composer install
+#tooling:
+#  drush:
+#    service: appserver
+#    env:
+#      DRUSH_OPTIONS_URI: "https://dhl-location-finder-encore.lndo.site"
+
+#events:
+#  pre-start:
+#    - appserver: composer install
+#    - database: echo "Composer ran"
