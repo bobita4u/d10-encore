@@ -19,6 +19,18 @@ tooling:
     service: appserver
     env:
       DRUSH_OPTIONS_URI: "https://d10-dhl-encore.lndo.site"
+  drupalcs:
+    service: appserver
+    cmd: "/app/vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions='php,module,inc,install,test,profile,theme,js,css,info,txt'"
+    description: Run phpcs Drupal Coding Standards against a given file or directory.
+  drupalcbf:
+    service: appserver
+    cmd: "/app/vendor/bin/phpcbf --standard=Drupal --extensions='php,module,inc,install,test,profile,theme,js,css,info,txt'"
+    description: Automatically fix Drupal coding standards suggestions.
+  phpunit:
+    service: appserver
+    cmd: vendor/bin/phpunit --configuration web/core
+    description: Run PHPUnit tests on a specific file or Drupal module.
 
 #events:
 #  pre-start:
