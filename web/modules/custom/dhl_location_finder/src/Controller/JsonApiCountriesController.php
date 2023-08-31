@@ -35,7 +35,7 @@ class JsonApiCountriesController
 
     if (!empty($countries)) {
       foreach ($countries as $c) {
-        if (str_contains($c->getCountryCode(), strtoupper($input))) {
+        if (str_contains(strtoupper($c->getName()), strtoupper($input)) || str_contains($c->getCountryCode(), strtoupper($input))) {
           $options[$c->getCountryCode()] = $c->getName();
           $results[] = [
             'value' => $c->getCountryCode(),

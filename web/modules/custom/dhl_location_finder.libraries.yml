@@ -1,4 +1,0 @@
-tweaks:
-  version: VERSION
-  js:
-    js/script.js: {}

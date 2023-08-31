@@ -21,10 +21,12 @@ class LocationFinderForm extends FormBase
     $form['country_code'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Country'),
+      '#required' => TRUE,
       '#autocomplete_route_name' => 'dhl_location_finder.autocomplete',
       '#attributes' => [
-        'autocomplete' => 'new-password',
-        'autocorrect' => 'off',
+        'autocomplete' => "new-password",
+        'readonly' => 'readonly',
+        'onfocus' => "this.removeAttribute('readonly');"
       ]
     ];
 
@@ -32,16 +34,23 @@ class LocationFinderForm extends FormBase
       '#type' => 'textfield',
       '#title' => $this->t('City'),
       '#required' => TRUE,
+      '#attributes' => [
+        'autocomplete' => "new-password",
+      ]
     ];
     $form['postal_code'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Postal Code'),
       '#required' => TRUE,
+      '#attributes' => [
+        'autocomplete' => "new-password",
+      ]
     ];
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Find Locations'),
     ];
+    $form['#attributes']['autocomplete'] = "off";
 
     return $form;
   }
@@ -52,8 +61,8 @@ class LocationFinderForm extends FormBase
     $postalCode = $form_state->getValue('postal_code');
     $countryCode = $form_state->getValue('country_code');
 
-    kint($form_state->getUserInput());
-    exit;
+    /*kint($form_state->getUserInput());
+    exit;*/
 
     // Prepare the API request.
     $client = new Client();
